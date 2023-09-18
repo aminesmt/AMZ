@@ -82,13 +82,18 @@ def get_suggestions():
         '_': _
     }
 
+    # Add the User-Agent header
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36'
+    }
+
     alphabets_en = list("abcdefghijklmnopqrstuvwxyz")
 
     suggestions_list = []
 
     for letter in alphabets_en:
         params["prefix"] = letter + keyword + letter
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, headers=headers)
         suggestions = json.loads(response.text)["suggestions"]
         for suggestion in suggestions:
             value = suggestion["value"]
