@@ -5,7 +5,6 @@ from flask import Flask, request, jsonify, send_file
 import requests
 from werkzeug.utils import secure_filename
 import os
-import ffmpeg
 
 
 def create_app():
